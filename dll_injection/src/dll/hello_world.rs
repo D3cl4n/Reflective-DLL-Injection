@@ -1,3 +1,4 @@
+#[cfg(feature = "dll")]
 extern crate winapi;
 
 use winapi::um::winuser::{MessageBoxA, HWND_DESKTOP, MB_OK};
