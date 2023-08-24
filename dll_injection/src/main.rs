@@ -1,5 +1,3 @@
-#[cfg(feature = "dll")]
-
 mod process;
 mod tests;
 
