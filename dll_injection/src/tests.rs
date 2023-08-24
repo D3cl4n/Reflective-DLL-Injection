@@ -1,25 +1,15 @@
-use crate::process::open_process;
+#[cfg(test)]
 
-// Test case for open_process
-pub unsafe fn open_process_test(process_id: u32)
+mod tests
 {
-    let result: bool;
-    unsafe 
+    use crate::process::open_process;
+
+    #[test]
+    fn open_process_test()
     {
-        match open_process(process_id)
+        unsafe
         {
-            Some(_process_handle) => result = true,
-            None => result = false
+            assert_ne!(open_process(6252), None)
         }
-    }   
-
-    if result
-    {
-        println!("[+] Open process generic test passed");
-    }
-
-    else if !result
-    {
-        println!("[!] Open process generic test failed");
     }
 }
