@@ -6,15 +6,13 @@ version = 3
 name = "dll_injection"
 version = "0.1.0"
 dependencies = [
+ "target_dlls",
  "winapi",
 ]
 
 [[package]]
 name = "target_dlls"
 version = "0.1.0"
-dependencies = [
- "winapi",
-]
 
 [[package]]
 name = "winapi"

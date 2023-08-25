@@ -7,3 +7,4 @@ edition = "2021"
 
 [dependencies]
 winapi = { version = "0.3", features = ["minwindef", "handleapi", "processthreadsapi", "winuser"]}
+target_dlls = { path = "../target_dlls" }

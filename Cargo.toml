@@ -2,5 +2,5 @@
 
 members = [
     "dll_injection",
-    "target_dlls",
+    "target_dlls"
 ]
