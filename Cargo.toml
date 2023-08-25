@@ -1,0 +1,6 @@
+[workspace]
+
+members = [
+    "dll_injection",
+    "target_dlls",
+]
