@@ -3,7 +3,7 @@ mod tests;
 
 fn main() 
 {
-    let process: &str = "notepad";
+    let process: &str = "notepad.exe";
     crate::process::get_process_id_by_name(process);
     unsafe 
     {
