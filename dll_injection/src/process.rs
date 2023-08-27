@@ -2,16 +2,16 @@ extern crate winapi;
 extern crate sysinfo;
 
 use std::ptr;
-use sysinfo::{System, SystemExt};
+use sysinfo::{SystemExt};
 use winapi::um::processthreadsapi::{OpenProcess};
 use winapi::um::winnt::{PROCESS_QUERY_INFORMATION, PROCESS_VM_READ};
 
-pub fn get_process_id_by_name(process_name: &String)
+pub fn get_process_id_by_name(process_name: &str)
 {
     let mut system = sysinfo::System::new();
     system.refresh_all();
 
-    for process in system.processes_by_exact_name(&process_name)
+    for process in system.processes_by_exact_name(process_name)
     {
         println!("[+] Process name: {:?}", process.name);
         println!("[+] Nodepad PID: {:?}", process.pid);
