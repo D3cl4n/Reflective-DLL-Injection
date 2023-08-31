@@ -5,7 +5,21 @@ use std::ptr;
 use std::fs;
 use sysinfo::{ProcessExt, System, SystemExt, Pid, PidExt};
 use winapi::um::processthreadsapi::{OpenProcess};
+use winapi::um::memoryapi::{VirtualAllocEx};
+use winapi::um::winnt::{MEM_COMMIT, MEM_RESERVE, PAGE_EXECUTE_READWRITE};
+use winapi::shared::minwindef::{LPVOID};
 use winapi::um::winnt::{PROCESS_QUERY_INFORMATION, PROCESS_VM_READ};
+
+
+pub fn virtual_alloc_ex(handle: u32, size: u64)
+{
+    println!("[+] Allocating {:?} bytes of RWX memory inside target process", size);
+
+    unsafe
+    {
+        let allocated_addr = VirtualAllocEx(handle, ptr::null_mut(), size as usize, MEM_RESERVE | MEM_COMMIT, PAGE_EXECUTE_READWRITE);
+    }
+}
 
 pub fn get_dll_size(path: &str) -> Option<u64>
 {
@@ -18,9 +32,8 @@ pub fn get_dll_size(path: &str) -> Option<u64>
             return Some(metadata.len());
         }
 
-        Err(e) =>
+        Err(_e) =>
         {
-            println!("[!] Error getting DLL length: {:?}", e);
             return None;
         }
     }
@@ -56,6 +69,7 @@ pub unsafe fn open_process(process_id: u32) -> Option<u32>
 
     else
     {
+        println!("[+] Opened process handle: {:?}", process_handle);
         Some(process_handle as u32)
     }
 }

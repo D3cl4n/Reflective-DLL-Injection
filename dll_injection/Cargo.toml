@@ -6,6 +6,6 @@ edition = "2021"
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-winapi = { version = "0.3", features = ["minwindef", "handleapi", "processthreadsapi", "winuser"]}
+winapi = { version = "0.3", features = ["minwindef", "handleapi", "processthreadsapi", "winuser", "memoryapi"]}
 target_dlls = { path = "../target_dlls" }
 sysinfo = "0.29.8"
